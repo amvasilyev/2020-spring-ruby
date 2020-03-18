@@ -1,0 +1,3 @@
+class MyComplex
+
+end

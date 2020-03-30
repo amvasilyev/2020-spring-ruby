@@ -1,3 +1,6 @@
+# frozen_string_literal: true
+
+# Complex repsentation
 class MyComplex
   attr_reader :imaginary
   attr_reader :real

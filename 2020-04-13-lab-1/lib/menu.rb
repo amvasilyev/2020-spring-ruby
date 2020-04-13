@@ -40,11 +40,13 @@ class Menu
   end
 
   def show_rasp
-    train_id = @prompt.select('Выберите поезд') do |menu|
-      @train_list.each_train do |train|
-        menu.choice(train, train.id)
+    train = @prompt.select('Выберите поезд') do |menu|
+      @train_list.each_train do |train_choice|
+        menu.choice(train_choice, train_choice)
       end
     end
-    pp train_id
+    train.each_stop.with_index do |stop, index|
+      puts "#{index + 1}: #{stop}"
+    end
   end
 end

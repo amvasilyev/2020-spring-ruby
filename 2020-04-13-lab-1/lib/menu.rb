@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 require 'tty-prompt'
+require_relative 'data_reader'
 require_relative 'train_list'
 require_relative 'train'
 require_relative 'stop'
@@ -9,19 +10,7 @@ require_relative 'stop'
 class Menu
   def initialize
     @prompt = TTY::Prompt.new
-    @train_list = TrainList.new([
-                                  Train.new(155, [
-                                              Stop.new(1, 'Some', '12:55', 10, 10),
-                                              Stop.new(5, 'Second', '13:55', 10, 10),
-                                              Stop.new(7, 'Third', '14:10', 10, 10),
-                                              Stop.new(10, 'Last', '14:55', 10, 10)
-                                            ]),
-                                  Train.new(10, [
-                                              Stop.new(1, 'First', '13:55', 10, 10),
-                                              Stop.new(5, 'Second', '14:55', 10, 10),
-                                              Stop.new(10, 'Last one', '15:55', 10, 10)
-                                            ])
-                                ])
+    @train_list = DataReader.read_trains
   end
 
   MAIN_MENU_CHOICES = [

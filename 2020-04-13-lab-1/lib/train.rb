@@ -9,6 +9,10 @@ class Train
     @stops = stops
   end
 
+  def add_stop(stop)
+    @stops.append(stop)
+  end
+
   def to_s
     "#{@stops.first} #{@stops.last}"
   end

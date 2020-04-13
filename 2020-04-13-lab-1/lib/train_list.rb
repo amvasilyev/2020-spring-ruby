@@ -6,6 +6,10 @@ class TrainList
     @trains = trains
   end
 
+  def add_train(train)
+    @trains.append(train)
+  end
+
   def each_train
     @trains.each do |train|
       yield train

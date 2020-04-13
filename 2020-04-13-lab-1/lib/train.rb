@@ -20,4 +20,8 @@ class Train
       yield stop
     end
   end
+
+  def stop_count
+    @stops.length
+  end
 end

@@ -11,4 +11,10 @@ class TrainList
       yield train
     end
   end
+
+  def each_train_by_length
+    @trains.sort_by(&:stop_count).each do |train|
+      yield train
+    end
+  end
 end

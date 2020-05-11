@@ -7,9 +7,12 @@ GEM
     listen (3.2.1)
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
+    nio4r (2.5.2)
     parallel (1.19.1)
     parser (2.7.1.2)
       ast (~> 2.4.0)
+    puma (4.3.3)
+      nio4r (~> 2.0)
     rack (2.2.2)
     rainbow (3.0.0)
     rb-fsevent (0.10.4)
@@ -36,6 +39,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  puma
   rerun
   roda
   rubocop

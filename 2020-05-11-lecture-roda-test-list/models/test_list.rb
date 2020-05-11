@@ -21,7 +21,6 @@ class TestList
 
   def filter(date, description)
     @tests.select do |test|
-      pp test
       next if !date.empty? && date != test.date
       next if !description.empty? && !test.description.include?(description)
 

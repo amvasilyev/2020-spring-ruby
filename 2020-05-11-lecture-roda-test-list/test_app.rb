@@ -14,14 +14,14 @@ class TestApp < Roda
     opts[:serve_static] = true
   end
 
+  opts[:tests] = TestList.new([
+                                Test.new('Лабораторая №1', '2020-04-05', 'Проверка знаний по языку Ruby'),
+                                Test.new('Лабораторая №2', '2020-04-20', 'Проверка умений написания приложений на языке Ruby'),
+                                Test.new('Финальный экзамен', '2020-06-20', 'Проверка всех знаний и умений')
+                              ])
+
   route do |r|
     r.public if opts[:serve_static]
-
-    @tests = TestList.new([
-                            Test.new('Лабораторая №1', '2020-04-05', 'Проверка знаний по языку Ruby'),
-                            Test.new('Лабораторая №2', '2020-04-20', 'Проверка умений написания приложений на языке Ruby'),
-                            Test.new('Финальный экзамен', '2020-06-20', 'Проверка всех знаний и умений')
-                          ])
 
     r.root do
       'Hello, world!'
@@ -31,9 +31,9 @@ class TestApp < Roda
       r.is do
         @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
         @filtered_tests = if @params[:errors].empty?
-                            @tests.filter(@params[:date], @params[:description])
+                            opts[:tests].filter(@params[:date], @params[:description])
                           else
-                            @tests.all_tests
+                            opts[:tests].all_tests
                           end
         view('tests')
       end
@@ -41,6 +41,16 @@ class TestApp < Roda
       r.on 'new' do
         r.get do
           view('new_test')
+        end
+
+        r.post do
+          @params = InputValidators.check_test(r.params['name'], r.params['date'], r.params['description'])
+          if @params[:errors].empty?
+            opts[:tests].add_test(Test.new(@params[:name], @params[:date], @params[:description]))
+            r.redirect '/tests'
+          else
+            view('new_test')
+          end
         end
       end
     end

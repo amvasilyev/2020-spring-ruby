@@ -1,21 +1,32 @@
 
+<% if @params && !@params[:errors].empty? %>
+  <div class="large-12 cell callout">
+    <p>При заполнении формы возникли ошибки</p>
+    <ul>
+      <% @params[:errors].each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
 <div class="large-12 cell">
   <form method="post">
     <div class="grid-container">
       <div class="grid-x grid-padding-x">
         <div class="large-12 cell">
           <label>Название
-            <input type="text" placeholder="Тест №10" name="name">
+            <input type="text" placeholder="Тест №10" name="name" value="<%= @params && @params[:name] %>">
           </label>
         </div>
         <div class="large-12 cell">
           <label>Дата
-            <input type="text" placeholder="2020-01-15" name="date">
+            <input type="text" placeholder="2020-01-15" name="date" value="<%= @params && @params[:date] %>">
           </label>
         </div>
         <div class="large-12 cell">
           <label>Описание
-            <input type="text" placeholder="Проверка знаний" name="description">
+            <input type="text" placeholder="Проверка знаний" name="description" value="<%= @params && @params[:description] %>">
           </label>
         </div>
         <div class="large-12 cell">

@@ -28,13 +28,21 @@ class TestApp < Roda
     end
 
     r.on 'tests' do
-      @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
-      @filtered_tests = if @params[:errors].empty?
-                          @tests.filter(@params[:date], @params[:description])
-                        else
-                          @tests.all_tests
-                        end
-      view('tests')
+      r.is do
+        @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
+        @filtered_tests = if @params[:errors].empty?
+                            @tests.filter(@params[:date], @params[:description])
+                          else
+                            @tests.all_tests
+                          end
+        view('tests')
+      end
+
+      r.on 'new' do
+        r.get do
+          view('new_test')
+        end
+      end
     end
   end
 end

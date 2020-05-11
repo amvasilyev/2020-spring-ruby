@@ -32,6 +32,7 @@ GEM
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 1.4.0, < 2.0)
     ruby-progressbar (1.10.1)
+    tilt (2.0.10)
     unicode-display_width (1.7.0)
 
 PLATFORMS
@@ -42,6 +43,7 @@ DEPENDENCIES
   rerun
   roda
   rubocop
+  tilt
 
 BUNDLED WITH
    2.1.4

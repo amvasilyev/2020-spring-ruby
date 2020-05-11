@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 
 gem 'puma'
 gem 'roda'
+gem 'tilt'
 
 group :development do
   gem 'rerun'

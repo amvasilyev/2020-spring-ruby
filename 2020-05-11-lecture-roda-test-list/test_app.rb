@@ -6,6 +6,7 @@ require 'roda'
 class TestApp < Roda
   opts[:root] = __dir__
   plugin :environments
+  plugin :render
 
   configure :development do
     plugin :public
@@ -17,6 +18,10 @@ class TestApp < Roda
 
     r.root do
       'Hello, world!'
+    end
+
+    r.on 'tests' do
+      view('tests')
     end
   end
 end

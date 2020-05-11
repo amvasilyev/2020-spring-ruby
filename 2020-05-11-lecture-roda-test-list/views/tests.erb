@@ -4,23 +4,63 @@
   </div>
 
   <div class="large-12 cell">
-    <table>
-    <thead>
-      <tr>
-        <th>Название</th>
-        <th>Дата</th>
-        <th>Описание</th>
-      </tr>
-    </thead>
-    <tbody>
-      <% @tests.each_test do |test| %>
+    <form method="get">
+      <div class="grid-x grid-padding-x">
+        <% unless @params[:errors].empty? %>
+          <div class="large-12 cell callout warning">
+            <p>
+              Параметры фильтра введены неверно, данные не были отфильтрованы
+            </p>
+            <ul>
+              <% @params[:errors].each do |error| %> 
+                <li><%= error %></li>
+              <% end %>
+            </ul>
+          </div>
+        <% end %>
+
+        <div class="large-6 cell">
+          <label>Дата теста
+            <input type="text" placeholder="2020-04-25" name="date" value="<%= @params[:date] %>">
+          </label>
+        </div>
+        <div class="large-6 cell">
+          <label>Описание
+            <input type="text" placeholder="проверка" name="description" value="<%= @params[:description] %>">
+          </label>
+        </div>
+        <div class="large-12 cell">
+          <input type="submit" value="Фильтровать" class="button">
+        </div>
+      </div>
+    </form>
+  </div>
+
+  <div class="large-12 cell">
+    <% if @filtered_tests.empty? %>
+      <div class="callout">
+        Согласно вашему фильтру никаких тестов не было найдено
+      </div>
+    <% else %>
+      <table>
+      <thead>
         <tr>
-          <td><%= test.name %></td>
-          <td><%= test.date %></td>
-          <td><%= test.description %></td>
+          <th>Название</th>
+          <th>Дата</th>
+          <th>Описание</th>
         </tr>
-      <% end %>
-    </tbody>
-    </table>
+      </thead>
+      <tbody>
+        <% @filtered_tests.each do |test| %>
+          <tr>
+            <td><%= test.name %></td>
+            <td><%= test.date %></td>
+            <td><%= test.description %></td>
+          </tr>
+        <% end %>
+      </tbody>
+      </table>
+    
+    <% end %>
   </div>
 </div>

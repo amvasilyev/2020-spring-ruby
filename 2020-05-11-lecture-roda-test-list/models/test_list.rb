@@ -10,4 +10,17 @@ class TestList
   def initialize(tests = [])
     @tests = tests
   end
+
+  def all_tests
+    @tests.dup
+  end
+
+  def filter(date, description)
+    @tests.select do |test|
+      next if !date.empty? && date != test.date
+      next if !description.empty? && !test.description.include?(description)
+
+      true
+    end
+  end
 end

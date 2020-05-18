@@ -31,8 +31,8 @@ class TestApp < Roda
 
     r.on 'tests' do
       r.is do
-        @params = InputValidators.check_date_description(r.params['date'], r.params['description'])
-        @filtered_tests = if @params[:errors].empty?
+        @params = TestFilterFormSchema.call(r.params)
+        @filtered_tests = if @params.success?
                             opts[:tests].filter(@params[:date], @params[:description])
                           else
                             opts[:tests].all_tests

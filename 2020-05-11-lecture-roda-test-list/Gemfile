@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'dry-schema'
 gem 'forme'
 gem 'puma'
 gem 'roda'

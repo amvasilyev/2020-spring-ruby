@@ -4,7 +4,7 @@
   </div>
 
   <div class="large-12 cell">
-    <form method="get">
+    <% form(method: :get) do |f| %>
       <div class="grid-x grid-padding-x">
         <% unless @params[:errors].empty? %>
           <div class="large-12 cell callout warning">
@@ -21,19 +21,19 @@
 
         <div class="large-6 cell">
           <label>Дата теста
-            <input type="text" placeholder="2020-04-25" name="date" value="<%= @params[:date] %>">
+            <%= f.input(:text, placeholder: '2020-04-25', name: :date, value: @params[:date]) %>
           </label>
         </div>
         <div class="large-6 cell">
           <label>Описание
-            <input type="text" placeholder="проверка" name="description" value="<%= @params[:description] %>">
+            <%= f.input(:text, placeholder: 'проверка', name: :description, value: @params[:description]) %>
           </label>
         </div>
         <div class="large-12 cell">
-          <input type="submit" value="Фильтровать" class="button">
+          <%= f.button(value: 'Фильтровать', class: 'button') %>
         </div>
       </div>
-    </form>
+    <% end %>
   </div>
 
   <div class="large-12 cell">

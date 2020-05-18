@@ -2,6 +2,7 @@
 
 source 'https://rubygems.org'
 
+gem 'forme'
 gem 'puma'
 gem 'roda'
 gem 'tilt'

@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'forme'
 require 'roda'
 require_relative 'models'
 
@@ -7,6 +8,7 @@ require_relative 'models'
 class TestApp < Roda
   opts[:root] = __dir__
   plugin :environments
+  plugin :forme
   plugin :render
 
   configure :development do

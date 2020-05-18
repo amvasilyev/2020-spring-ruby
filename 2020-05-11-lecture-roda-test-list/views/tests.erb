@@ -20,14 +20,10 @@
         <% end %>
 
         <div class="large-6 cell">
-          <label>Дата теста
-            <%= f.input(:date, type: :text, placeholder: '2020-04-25') %>
-          </label>
+          <%= f.input(:date, type: :text, placeholder: '2020-04-25', label: 'Дата теста') %>
         </div>
         <div class="large-6 cell">
-          <label>Описание
-            <%= f.input(:description, type: :text, placeholder: 'проверка') %>
-          </label>
+          <%= f.input(:description, type: :text, placeholder: 'проверка', label: 'Описание') %>
         </div>
         <div class="large-12 cell">
           <%= f.button(value: 'Фильтровать', class: 'button') %>

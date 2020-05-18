@@ -4,18 +4,13 @@
   </div>
 
   <div class="large-12 cell">
-    <% form({ method: :get }, { obj: @params.to_h }) do |f| %>
+    <% form({ method: :get }, { obj: @params }) do |f| %>
       <div class="grid-x grid-padding-x">
         <% if @params.failure? %>
           <div class="large-12 cell callout warning">
             <p>
               Параметры фильтра введены неверно, данные не были отфильтрованы
             </p>
-            <ul>
-              <% @params.errors(full: true).each do |error| %> 
-                <li><%= error %></li>
-              <% end %>
-            </ul>
           </div>
         <% end %>
 

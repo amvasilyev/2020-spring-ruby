@@ -31,7 +31,7 @@ class TestApp < Roda
 
     r.on 'tests' do
       r.is do
-        @params = TestFilterFormSchema.call(r.params)
+        @params = DryResultFormeAdapter.new(TestFilterFormSchema.call(r.params))
         @filtered_tests = if @params.success?
                             opts[:tests].filter(@params[:date], @params[:description])
                           else

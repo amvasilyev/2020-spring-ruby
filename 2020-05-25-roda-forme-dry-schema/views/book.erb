@@ -6,6 +6,7 @@
     <p>Автор: <%= @book.author %></p>
 
     <a class="button" href="/books/<%= @book.id %>/edit">Редактировать</a>
-    <a class="button" href="/books">Назад к списку книг</a>
+    <a class="button warning" href="/books/<%= @book.id %>/delete">Удалить</a>
+    <a class="button secondary" href="/books">Назад к списку книг</a>
   </div>
 </div>

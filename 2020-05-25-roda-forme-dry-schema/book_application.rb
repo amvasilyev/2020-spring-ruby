@@ -74,6 +74,23 @@ class BookApplication < Roda
             end
           end
         end
+
+        r.on 'delete' do
+          r.get do
+            @parameters = {}
+            view('book_delete')
+          end
+
+          r.post do
+            @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
+            if @parameters.success?
+              opts[:books].delete_book(@book.id)
+              r.redirect('/books')
+            else
+              view('book_delete')
+            end
+          end
+        end
       end
 
       r.on 'new' do

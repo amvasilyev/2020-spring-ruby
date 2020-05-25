@@ -1,0 +1,25 @@
+<div class="grid-x grid-margin-x">
+  <div class="cell large-12">
+    <h3>Список книг</h3>
+  </div>
+
+  <% if @books.size == 0 %>
+    <div class="cell large-12 callout warning">
+      В приложении нет информации о книгах
+    </div>
+  <% else%>
+    <% @books.each do |book| %>
+      <div class="card cell large-4">
+        <div class="card-divider">
+          <%= book.title %>
+        </div>
+        <div class="card-section">
+          <p><%= book.author %></p>
+          <p>
+            <a class="button" href="/books/<%= book.id %>">Информация о книге</a>
+          <p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

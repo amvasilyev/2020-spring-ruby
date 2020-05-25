@@ -10,6 +10,9 @@
       <%= f.input(:published_on, type: :date, label: 'Дата публикации', placeholder: '2015-12-10')%>
     </div>
     <div class="large-12 cell">
+      <%= f.input(:mark, type: :text, label: 'Оценка', placeholder: '4') %>
+    </div>
+    <div class="large-12 cell">
       <%= f.button(value: form_type, class: 'button') %>
       <a href="<%= back_location %>" class="button secondary">Отмена</a>
     </div>

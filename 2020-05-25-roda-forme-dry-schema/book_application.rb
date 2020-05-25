@@ -25,13 +25,15 @@ class BookApplication < Roda
         id: 25,
         title: 'Programming Ruby 1.9 & 2.0',
         author: 'Dave Thomas',
-        published_on: Date.parse('2013-06-18')
+        published_on: Date.parse('2013-06-18'),
+        mark: 5
       ),
       Book.new(
         id: 5,
         title: 'The Pragmatic Programmer',
         author: 'Dave Thomas, Andreyw Hunt',
-        published_on: Date.parse('1999-10-01')
+        published_on: Date.parse('1999-10-01'),
+        mark: 4
       )
     ]
   )

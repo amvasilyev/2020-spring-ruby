@@ -25,7 +25,8 @@ class BookList
       title: parameters[:title],
       author: parameters[:author],
       published_on: parameters[:published_on],
-      mark: parameters[:mark]
+      mark: parameters[:mark],
+      circulation: parameters[:circulation]
     )
     book_id
   end
@@ -36,6 +37,7 @@ class BookList
     book.author = parameters[:author]
     book.published_on = parameters[:published_on]
     book.mark = parameters[:mark]
+    book.circulation = parameters[:circulation]
   end
 
   def delete_book(id)

@@ -27,7 +27,8 @@ class BookApplication < Roda
         author: 'Dave Thomas',
         published_on: Date.parse('2013-06-18'),
         mark: 5,
-        circulation: 3.5
+        circulation: 3.5,
+        cover_type: BookCoverType::THICK
       ),
       Book.new(
         id: 5,
@@ -35,7 +36,8 @@ class BookApplication < Roda
         author: 'Dave Thomas, Andreyw Hunt',
         published_on: Date.parse('1999-10-01'),
         mark: 4,
-        circulation: 10
+        circulation: 10,
+        cover_type: BookCoverType::THIN
       )
     ]
   )

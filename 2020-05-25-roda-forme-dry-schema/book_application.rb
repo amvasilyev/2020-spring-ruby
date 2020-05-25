@@ -56,6 +56,23 @@ class BookApplication < Roda
 
         view('book')
       end
+
+      r.on 'new' do
+        r.get do
+          @parameters = {}
+          view('book_new')
+        end
+
+        r.post do
+          @parameters = DryResultFormeWrapper.new(BookNewFormSchema.call(r.params))
+          if @parameters.success?
+            opts[:books].add_book(@parameters)
+            r.redirect '/books'
+          else
+            view('book_new')
+          end
+        end
+      end
     end
   end
 end

@@ -54,7 +54,26 @@ class BookApplication < Roda
         @book = opts[:books].book_by_id(book_id)
         next if @book.nil?
 
-        view('book')
+        r.is do
+          view('book')
+        end
+
+        r.on 'edit' do
+          r.get do
+            @parameters = @book.to_h
+            view('book_edit')
+          end
+
+          r.post do
+            @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
+            if @parameters.success?
+              opts[:books].update_book(@book.id, @parameters)
+              r.redirect "/books/#{@book.id}"
+            else
+              view('book_edit')
+            end
+          end
+        end
       end
 
       r.on 'new' do
@@ -64,7 +83,7 @@ class BookApplication < Roda
         end
 
         r.post do
-          @parameters = DryResultFormeWrapper.new(BookNewFormSchema.call(r.params))
+          @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
           if @parameters.success?
             opts[:books].add_book(@parameters)
             r.redirect '/books'

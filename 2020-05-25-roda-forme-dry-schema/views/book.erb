@@ -5,6 +5,7 @@
     <p>Название: <%= @book.title %></p>
     <p>Автор: <%= @book.author %></p>
 
+    <a class="button" href="/books/<%= @book.id %>/edit">Редактировать</a>
     <a class="button" href="/books">Назад к списку книг</a>
   </div>
 </div>

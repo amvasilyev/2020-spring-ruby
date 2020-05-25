@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require 'date'
 require 'forme'
 require 'roda'
 
@@ -23,12 +24,14 @@ class BookApplication < Roda
       Book.new(
         id: 25,
         title: 'Programming Ruby 1.9 & 2.0',
-        author: 'Dave Thomas'
+        author: 'Dave Thomas',
+        published_on: Date.parse('2013-06-18')
       ),
       Book.new(
         id: 5,
         title: 'The Pragmatic Programmer',
-        author: 'Dave Thomas, Andreyw Hunt'
+        author: 'Dave Thomas, Andreyw Hunt',
+        published_on: Date.parse('1999-10-01')
       )
     ]
   )

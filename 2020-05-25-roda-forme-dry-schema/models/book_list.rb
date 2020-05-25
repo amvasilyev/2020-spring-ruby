@@ -23,7 +23,8 @@ class BookList
     @books[book_id] = Book.new(
       id: book_id,
       title: parameters[:title],
-      author: parameters[:author]
+      author: parameters[:author],
+      published_on: parameters[:published_on]
     )
   end
 
@@ -31,6 +32,7 @@ class BookList
     book = @books[id]
     book.title = parameters[:title]
     book.author = parameters[:author]
+    book.published_on = parameters[:published_on]
   end
 
   def delete_book(id)

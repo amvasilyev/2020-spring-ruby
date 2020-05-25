@@ -27,6 +27,7 @@ class BookList
       published_on: parameters[:published_on],
       mark: parameters[:mark]
     )
+    book_id
   end
 
   def update_book(id, parameters)

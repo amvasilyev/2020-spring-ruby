@@ -10,7 +10,7 @@
       <%= f.input(:published_on, type: :date, label: 'Дата публикации', placeholder: '2015-12-10')%>
     </div>
     <div class="large-12 cell">
-      <%= f.input(:mark, type: :text, label: 'Оценка', placeholder: '4') %>
+      <%= f.input(:mark, type: :radioset, label: 'Оценка', options: 1.upto(5).to_a) %>
     </div>
     <div class="large-12 cell">
       <%= f.button(value: form_type, class: 'button') %>

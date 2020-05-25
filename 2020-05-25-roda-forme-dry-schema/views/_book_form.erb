@@ -16,7 +16,7 @@
       <%= f.input(:circulation, type: :text, label: 'Тираж (в тыс. экземплярах)', placeholder: '2.5') %>
     </div>
     <div class="large-12 cell">
-      <%= f.input(:cover_type, type: :text, label: 'Тип обложки', placeholder: 'Толстая')%>
+      <%= f.input(:cover_type, type: :select, label: 'Тип обложки', options: BookCoverType.all_types, add_blank: true)%>
     </div>
     <div class="large-12 cell">
       <%= f.button(value: form_type, class: 'button') %>

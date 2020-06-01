@@ -1,3 +1,5 @@
 Metrics/BlockLength:
   ExcludedMethods:
-    - route
+    - 'route'
+    - 'hash_branch'
+    - 'on'

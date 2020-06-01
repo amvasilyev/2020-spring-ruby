@@ -14,3 +14,10 @@
   :mark: 3
   :circulation: 10.0
   :cover_type: Тонкая
+- :id: 3
+  :title: Путь Ruby
+  :author: Фултон Хэл
+  :published_on: 2015-04-29
+  :mark: 4
+  :circulation: 5.0
+  :cover_type: Толстая

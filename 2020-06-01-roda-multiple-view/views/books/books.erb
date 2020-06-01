@@ -2,7 +2,7 @@
   <div class="cell large-12">
     <h3>Список книг</h3>
 
-    <a href="/books/new" class="button">
+    <a href="<%= book_new_path %>" class="button">
       Добавить
     </a>
   </div>
@@ -20,7 +20,7 @@
         <div class="card-section">
           <p><%= book.author %></p>
           <p>
-            <a class="button" href="/books/<%= book.id %>">Информация о книге</a>
+            <a class="button" href="<%= path(book) %>">Информация о книге</a>
           <p>
         </div>
       </div>

@@ -1,5 +1,18 @@
+# frozen_string_literal: true
+
+# Routes for the cool books of this application
 class BookApplication
-  hash_branch('books') do |r|
+  path :books, '/cool_books'
+  path :book_new, '/cool_books/new'
+  path Book do |book, action|
+    if action
+      "/cool_books/#{book.id}/#{action}"
+    else
+      "/cool_books/#{book.id}"
+    end
+  end
+
+  hash_branch('cool_books') do |r|
     append_view_subdir('books')
     set_layout_options(template: '../views/layout')
 
@@ -26,7 +39,7 @@ class BookApplication
           @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
           if @parameters.success?
             opts[:books].update_book(@book.id, @parameters)
-            r.redirect "/books/#{@book.id}"
+            r.redirect(path(@book))
           else
             view('book_edit')
           end
@@ -43,7 +56,7 @@ class BookApplication
           @parameters = DryResultFormeWrapper.new(BookDeleteSchema.call(r.params))
           if @parameters.success?
             opts[:books].delete_book(@book.id)
-            r.redirect('/books')
+            r.redirect(books_path)
           else
             view('book_delete')
           end
@@ -60,8 +73,8 @@ class BookApplication
       r.post do
         @parameters = DryResultFormeWrapper.new(BookFormSchema.call(r.params))
         if @parameters.success?
-          book_id = opts[:books].add_book(@parameters)
-          r.redirect "/books/#{book_id}"
+          book = opts[:books].add_book(@parameters)
+          r.redirect(path(book))
         else
           view('book_new')
         end

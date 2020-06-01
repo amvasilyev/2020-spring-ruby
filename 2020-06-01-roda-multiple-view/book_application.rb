@@ -12,6 +12,7 @@ class BookApplication < Roda
   plugin :environments
   plugin :forme
   plugin :hash_routes
+  plugin :path
   plugin :render
   plugin :status_handler
   plugin :view_options
@@ -35,7 +36,7 @@ class BookApplication < Roda
     r.hash_branches
 
     r.root do
-      r.redirect '/books'
+      r.redirect books_path
     end
   end
 end

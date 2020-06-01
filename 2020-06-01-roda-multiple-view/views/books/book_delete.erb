@@ -11,7 +11,7 @@
     </div>
     <div class="large-12 cell">
       <%= f.button(value: 'Удалить', class: 'button warning') %>
-      <a href="/books/<%= @book.id %>" class="button secondary">Отмена</a>
+      <a href="<%= path(@book) %>" class="button secondary">Отмена</a>
     </div>
   </div>
 <% end %>

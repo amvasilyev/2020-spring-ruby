@@ -1,0 +1,16 @@
+---
+:book_list:
+- :id: 1
+  :title: Programming Ruby 1.9 & 2.0
+  :author: Dave Thomas
+  :published_on: 2013-06-18
+  :mark: 5
+  :circulation: 3.5
+  :cover_type: Толстая
+- :id: 2
+  :title: The Pragmatic Programmer
+  :author: Dave Thomas, Andreyw Hunt
+  :published_on: 1999-10-01
+  :mark: 3
+  :circulation: 10.0
+  :cover_type: Тонкая

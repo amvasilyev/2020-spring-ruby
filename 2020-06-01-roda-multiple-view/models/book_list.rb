@@ -19,7 +19,11 @@ class BookList
   end
 
   def add_book(parameters)
-    book_id = @books.keys.max + 1
+    book_id = if @books.empty?
+                1
+              else
+                @books.keys.max + 1
+              end
     @books[book_id] = Book.new(
       id: book_id,
       title: parameters[:title],
@@ -30,6 +34,10 @@ class BookList
       cover_type: parameters[:cover_type]
     )
     book_id
+  end
+
+  def add_real_book(book)
+    @books[book.id] = book
   end
 
   def update_book(id, parameters)

@@ -1,0 +1,26 @@
+<% form({ method: :post },{ obj: @parameters }) do |f| %>
+  <div class="grid-x grid-margin-x">
+    <div class="large-12 cell">
+      <%= f.input(:title, type: :text, label: 'Название книги', placeholder: 'Путь Ruby')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:author, type: :text, label: 'Автор', placeholder: 'Фултон Хел')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:published_on, type: :date, label: 'Дата публикации', placeholder: '2015-12-10')%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:mark, type: :radioset, label: 'Оценка', options: 1.upto(5).to_a) %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:circulation, type: :text, label: 'Тираж (в тыс. экземплярах)', placeholder: '2.5') %>
+    </div>
+    <div class="large-12 cell">
+      <%= f.input(:cover_type, type: :select, label: 'Тип обложки', options: BookCoverType.all_types, add_blank: true)%>
+    </div>
+    <div class="large-12 cell">
+      <%= f.button(value: form_type, class: 'button') %>
+      <a href="<%= back_location %>" class="button secondary">Отмена</a>
+    </div>
+  </div>
+<% end %>

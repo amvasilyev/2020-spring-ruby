@@ -1,0 +1,5 @@
+<div class="grid-x grid-margin-x">
+  <h3>Редактирование книги</h3>
+</div>
+
+<%= render('_book_form', locals: {form_type: 'Изменить', back_location: "/books/#{@book.id}"}) %>

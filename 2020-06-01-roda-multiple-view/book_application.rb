@@ -14,6 +14,7 @@ class BookApplication < Roda
   plugin :hash_routes
   plugin :render
   plugin :status_handler
+  plugin :view_options
 
   configure :development do
     plugin :public

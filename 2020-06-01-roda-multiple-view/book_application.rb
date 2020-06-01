@@ -20,7 +20,7 @@ class BookApplication < Roda
     opts[:serve_static] = true
   end
 
-  require_relative 'routes/book.rb'
+  require_relative 'routes/books.rb'
 
   opts[:store] = Store.new
   opts[:books] = opts[:store].book_list
